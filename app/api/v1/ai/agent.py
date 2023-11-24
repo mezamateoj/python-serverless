@@ -11,15 +11,8 @@ from langchain.chat_models import ChatOpenAI
 load_dotenv()
 OPENAI_API_KEY=os.getenv('OPENAI_API_KEY')
 
-# class Config:
-#     chunk_size = 500
-#     chunk_overlap = 0
-#     model_name = "gpt-3.5-turbo"
-#     temperature = 0
-
 class Agent:
     
-
     def __init__(self, url):
         self.result = None
         self.url = url
@@ -40,8 +33,6 @@ class Agent:
     
     def store_text(self):
         vector_store = Chroma.from_documents(documents=self.all_splits, embedding=OpenAIEmbeddings())
-        # question = "What is the title of the job?, the company name?, the job requirements or what are they looking for?, also what is the position, job about?"
-        # question = "Please provide specific details from the job posting, including the company name, job title, position, and a concise description of the job responsibilities. if not found tell me you could not found the info."
         question = """
         Please provide specific details from the job posting, including the company name, job title, position, and a concise description of the job responsibilities.
 
@@ -56,8 +47,3 @@ class Agent:
     def result_query(self):
         return self.result["result"]
         
-# if __name__ == "__main__":
-#     agent = Agent(url="https://www.linkedin.com/jobs/view/3770664876/?alternateChannel=search&refId=eW9zGFqxf%2BhOUK0uRC2WDw%3D%3D&trackingId=wlK31WeG%2FHXB7guQLVP8ZQ%3D%3D")
-#     agent.load_page()
-#     agent.split_text()
-#     agent.store_text()

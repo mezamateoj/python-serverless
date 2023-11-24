@@ -43,7 +43,7 @@ jobs:
             - name: Create Zipfile archive of Dependencies
               run: |
                   cd ./venv/lib/python3.9/site-packages
-                  zip -r9 ../../../../api.zip .
+                  zip -r9 ../../../../api.zip . -x 'node_modules/*' 'venv/*'
 
             # Step 8
             - name: Add App to Zip file
@@ -55,10 +55,11 @@ jobs:
               with:
                   name: api
                   path: api.zip
+
     continuous-deployment:
         runs-on: ubuntu-latest
-
         needs: [continuous-integration]
+
         if: github.ref == 'refs/heads/main'
         steps:
             - name: Install AWS CLI
