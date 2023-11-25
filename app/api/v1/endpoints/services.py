@@ -1,11 +1,10 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from api.v1.ai.agent import Agent
+from api.v1.endpoints.agent import Agent
 
 router = APIRouter()
 class Item(BaseModel):
     url: str
-
 
 @router.get("/")
 async def testing_child_resource():

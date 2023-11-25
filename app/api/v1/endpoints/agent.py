@@ -20,7 +20,6 @@ class Agent:
         self.split_text()
         self.store_text()
 
-
     def load_page(self):
         # specify a DocumentLoader to load in your unstructured data as Documents
         loader = WebBaseLoader(self.url)
