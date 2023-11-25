@@ -10,17 +10,18 @@ jobs:
 
         steps:
             # Step 1
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v2
 
             # Step 2
             - name: Set up Python 3.9
-              uses: actions/setup-python@v4
+              uses: actions/setup-python@v2
               with:
-                  python-version: 3.9
+                  python-version: 3.7
+                  architecture: x64
 
             # Step 3
             - name: Install Python Virtual ENV
-              run: pip install virtualenv
+              run: pip3 install virtualenv
             # Step 4
             - name: Setup Virtual env
               uses: actions/cache@v2
@@ -33,7 +34,7 @@ jobs:
             # Step 5
             - name: Activate and Install Depencies into Virtual env
               run: python -m venv venv && source venv/bin/activate &&
-                  pip install -r requirements.txt
+                  pip3 install -r requirements.txt
               if: steps.cache-venv.outputs.cache-hit != 'true'
             # Step 6
             - name: Activate venv and Run Test
@@ -84,7 +85,7 @@ jobs:
                   aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
             - name: Upload to S3
-              run: aws configure list && aws s3 cp api.zip "s3://ghosted/api.zip" --debug
+              run: aws s3 cp api.zip "s3://ghosted/api.zip"
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID}}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
