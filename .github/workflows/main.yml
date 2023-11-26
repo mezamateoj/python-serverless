@@ -10,19 +10,19 @@ jobs:
 
         steps:
             # Step 1
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v4
             # Step 2
             - name: Set up Python
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@v4
               with:
-                  python-version: 3.7
+                  python-version: 3.9
             # Step 3
             - name: Install Python Virtual ENV
               run: pip install --upgrade pip && pip install virtualenv
 
             # Step 5
             - name: Activate and Install Depencies into Virtual env
-              run: python3.7 -m venv venv && source venv/bin/activate &&
+              run: python3.9 -m venv venv && source venv/bin/activate &&
                   pip install -r requirements.txt
 
             # Step 6
