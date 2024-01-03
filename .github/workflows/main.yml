@@ -26,8 +26,8 @@ jobs:
                   pip install -r requirements.txt
 
             # Step 6
-            - name: Activate venv
-              run: . venv/bin/activate
+            - name: Activate venv and Run Tests
+              run: . venv/bin/activate && pytest
 
             # Step 7
             - name: Create Zipfile archive of Dependencies
