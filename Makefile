@@ -4,7 +4,7 @@ install:
 
 test:
 	#test commands
-	python -m pytest -vv --cov=src/ app/tests/
+	python -m pytest -vv app/tests/
 
 start:
 	#start commands

@@ -8,10 +8,10 @@ class Item(BaseModel):
 
 @router.get("/")
 async def testing_child_resource():
-    return {"message": "Hi There from api/v1. try /api/v1/url/ and pass a job url as a json body"}
+    return {"message": "Try /api/v1/url/ and pass a job url"}
 
 
 @router.post("/url/")
 async def create_job(item: Item):
     agent = Agent(url=item.url)
-    return {"message": "Site visited successfully!", 'result': agent.result_query()}
+    return {"message": "Site visited!", 'result': agent.result_query()}
