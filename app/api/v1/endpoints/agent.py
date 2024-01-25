@@ -33,9 +33,7 @@ class Agent:
     def store_text(self):
         vector_store = Chroma.from_documents(documents=self.all_splits, embedding=OpenAIEmbeddings())
         question = """
-        Please provide specific details from the job posting, including the company name, job title, position, and a concise description of the job responsibilities.
-
-        Por favor, proporcione detalles específicos de la oferta de trabajo, incluyendo el nombre de la empresa, el título del trabajo, la posición y una descripción concisa de las responsabilidades laborales.
+        Please summarize the key information from the web page, focusing on job requirements, qualifications, and benefits. Highlight any specific skills or experiences that are emphasized as important for the position.
         """
 
         # Distill the retrieved documents into an answer using an LLM/Chat model (e.g., gpt-3.5-turbo) with RetrievalQA chain.

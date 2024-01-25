@@ -21,7 +21,7 @@ jobs:
               run: pip install --upgrade pip && pip install virtualenv
 
             # Step 5
-            - name: Activate and Install Depencies into Virtual env
+            - name: Activate and Install Dependencies into Virtual env
               run: python3.9 -m venv venv && source venv/bin/activate &&
                   pip install -r requirements.txt
 
@@ -33,7 +33,7 @@ jobs:
             - name: Create Zipfile archive of Dependencies
               run: |
                   cd ./venv/lib/python3.9/site-packages
-                  zip -r9 ../../../../api.zip . -x '**/node_modules/*' '**/venv/*' '*.pyc' '__pycache__/*'
+                  zip -r9 ../../../../api.zip . -x '**/node_modules/*' '**/venv/*' '*.pyc' '__pycache__/*' '**/__pycache__/' '*.txt' '**/test_dir/*'
 
             # Step 8
             - name: Add App to Zip file
